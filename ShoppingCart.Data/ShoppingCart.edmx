@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ShoppingCartDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CartItem">
+          <Key>
+            <PropertyRef Name="cart_id" />
+          </Key>
+          <Property Name="cart_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="quanity" Type="int" Nullable="false" />
+          <Property Name="date_added" Type="datetime" Nullable="false" />
+          <Property Name="date_modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="lastname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="telephone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="cart_id" Type="int" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="token" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date_added" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="order_status_id" Type="int" Nullable="false" />
+          <Property Name="payment_method_id" Type="int" Nullable="false" />
+          <Property Name="payment_method" Type="nvarchar(max)" />
+          <Property Name="payment_firstname" Type="nvarchar(max)" />
+          <Property Name="payment_lastname" Type="nvarchar(max)" />
+          <Property Name="payment_address_1" Type="nvarchar(max)" />
+          <Property Name="payment_address_2" Type="nvarchar(max)" />
+          <Property Name="payment_city" Type="nvarchar(max)" />
+          <Property Name="payment_postcode" Type="nvarchar(max)" />
+          <Property Name="payment_country" Type="nvarchar(max)" />
+          <Property Name="shipping_firstname" Type="nvarchar(max)" />
+          <Property Name="shipping_lastname" Type="nvarchar(max)" />
+          <Property Name="shipping_address_1" Type="nvarchar(max)" />
+          <Property Name="shipping_address_2" Type="nvarchar(max)" />
+          <Property Name="shipping_city" Type="nvarchar(max)" />
+          <Property Name="shipping_postcode" Type="nvarchar(max)" />
+          <Property Name="shipping_country" Type="nvarchar(max)" />
+          <Property Name="comment" Type="nvarchar(max)" />
+          <Property Name="total" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="date_added" Type="datetime" Nullable="false" />
+          <Property Name="date_modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Order_Status">
+          <Key>
+            <PropertyRef Name="order_status_id" />
+          </Key>
+          <Property Name="order_status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment_Method">
+          <Key>
+            <PropertyRef Name="payment_method_id" />
+          </Key>
+          <Property Name="payment_method_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="header" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="shortdesc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="imagename" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="unitprice" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="subtract" Type="int" Nullable="false" />
+          <Property Name="sort_order" Type="int" Nullable="false" />
+          <Property Name="categoryid" Type="int" Nullable="false" />
+          <Property Name="date_added" Type="datetime" Nullable="false" />
+          <Property Name="date_modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="salt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="firstname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="lastame" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="date_added" Type="datetime" Nullable="false" />
+          <Property Name="date_modified" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="ShoppingCartDbModelStoreContainer">
+          <EntitySet Name="CartItem" EntityType="Self.CartItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Status" EntityType="Self.Order_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment_Method" EntityType="Self.Payment_Method" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ShoppingCartDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CartItem">
+          <Key>
+            <PropertyRef Name="cart_id" />
+          </Key>
+          <Property Name="cart_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="quanity" Type="Int32" Nullable="false" />
+          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_modified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cart_id" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="order_status_id" Type="Int32" Nullable="false" />
+          <Property Name="payment_method_id" Type="Int32" Nullable="false" />
+          <Property Name="payment_method" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="payment_firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="payment_lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="payment_address_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="payment_address_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="payment_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="payment_postcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="payment_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="shipping_firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="shipping_lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="shipping_address_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="shipping_address_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="shipping_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="shipping_postcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="shipping_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_modified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Order_Status">
+          <Key>
+            <PropertyRef Name="order_status_id" />
+          </Key>
+          <Property Name="order_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment_Method">
+          <Key>
+            <PropertyRef Name="payment_method_id" />
+          </Key>
+          <Property Name="payment_method_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="header" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="shortdesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="imagename" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="unitprice" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="subtract" Type="Int32" Nullable="false" />
+          <Property Name="sort_order" Type="Int32" Nullable="false" />
+          <Property Name="categoryid" Type="Int32" Nullable="false" />
+          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_modified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="salt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastame" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_modified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="ShoppingCartDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CartItems" EntityType="Self.CartItem" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Order_Status" EntityType="Self.Order_Status" />
+          <EntitySet Name="Payment_Method" EntityType="Self.Payment_Method" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ShoppingCartDbModelStoreContainer" CdmEntityContainer="ShoppingCartDbEntities">
+          <EntitySetMapping Name="CartItems">
+            <EntityTypeMapping TypeName="ShoppingCartDbModel.CartItem">
+              <MappingFragment StoreEntitySet="CartItem">
+                <ScalarProperty Name="cart_id" ColumnName="cart_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="quanity" ColumnName="quanity" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
+                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ShoppingCartDbModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="cart_id" ColumnName="cart_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="ShoppingCartDbModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="order_status_id" ColumnName="order_status_id" />
+                <ScalarProperty Name="payment_method_id" ColumnName="payment_method_id" />
+                <ScalarProperty Name="payment_method" ColumnName="payment_method" />
+                <ScalarProperty Name="payment_firstname" ColumnName="payment_firstname" />
+                <ScalarProperty Name="payment_lastname" ColumnName="payment_lastname" />
+                <ScalarProperty Name="payment_address_1" ColumnName="payment_address_1" />
+                <ScalarProperty Name="payment_address_2" ColumnName="payment_address_2" />
+                <ScalarProperty Name="payment_city" ColumnName="payment_city" />
+                <ScalarProperty Name="payment_postcode" ColumnName="payment_postcode" />
+                <ScalarProperty Name="payment_country" ColumnName="payment_country" />
+                <ScalarProperty Name="shipping_firstname" ColumnName="shipping_firstname" />
+                <ScalarProperty Name="shipping_lastname" ColumnName="shipping_lastname" />
+                <ScalarProperty Name="shipping_address_1" ColumnName="shipping_address_1" />
+                <ScalarProperty Name="shipping_address_2" ColumnName="shipping_address_2" />
+                <ScalarProperty Name="shipping_city" ColumnName="shipping_city" />
+                <ScalarProperty Name="shipping_postcode" ColumnName="shipping_postcode" />
+                <ScalarProperty Name="shipping_country" ColumnName="shipping_country" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
+                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Status">
+            <EntityTypeMapping TypeName="ShoppingCartDbModel.Order_Status">
+              <MappingFragment StoreEntitySet="Order_Status">
+                <ScalarProperty Name="order_status_id" ColumnName="order_status_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment_Method">
+            <EntityTypeMapping TypeName="ShoppingCartDbModel.Payment_Method">
+              <MappingFragment StoreEntitySet="Payment_Method">
+                <ScalarProperty Name="payment_method_id" ColumnName="payment_method_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="ShoppingCartDbModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="header" ColumnName="header" />
+                <ScalarProperty Name="shortdesc" ColumnName="shortdesc" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="imagename" ColumnName="imagename" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="unitprice" ColumnName="unitprice" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="subtract" ColumnName="subtract" />
+                <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
+                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ShoppingCartDbModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="salt" ColumnName="salt" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastame" ColumnName="lastame" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
+                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
