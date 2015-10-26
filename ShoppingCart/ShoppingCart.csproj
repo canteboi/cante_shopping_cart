@@ -207,6 +207,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminProductsApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
@@ -315,6 +316,16 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.9.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingCart.Business\ShoppingCart.Business.csproj">
+      <Project>{0a4ea7be-951e-4802-91e5-e1065317bf3f}</Project>
+      <Name>ShoppingCart.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShoppingCart.Model\ShoppingCart.Model.csproj">
+      <Project>{259047d1-dfb6-47d5-a063-a4785b56a61a}</Project>
+      <Name>ShoppingCart.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
