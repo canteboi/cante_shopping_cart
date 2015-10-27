@@ -43,13 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CartItemService.cs" />
     <Compile Include="ICartItemService.cs" />
     <Compile Include="ICustomerService.cs" />
     <Compile Include="IOrderService.cs" />
     <Compile Include="IProductService.cs" />
     <Compile Include="IUserService.cs" />
+    <Compile Include="OrderService.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShoppingCart.Data\ShoppingCart.Data.csproj">

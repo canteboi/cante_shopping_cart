@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ShoppingCart.Data;
+﻿using System.Collections.Generic;
+using DbCustomer = ShoppingCart.Data.Customer;
+using Customer = ShoppingCart.Model.Customer;
 
 namespace ShoppingCart.Business
 {
     interface ICustomerService
     {
         List<Customer> GetCustomers();
-        int AddCustomer();
-        void DeleteCustomer();
-        void UpdateCustomer();
+        int AddCustomer(Customer customer);
+        void DeleteCustomer(int customerId);
+        void UpdateCustomer(Customer customer);
     }
 }
