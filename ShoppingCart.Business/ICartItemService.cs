@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ShoppingCart.Data;
+﻿using System.Collections.Generic;
+using DbCartItem = ShoppingCart.Data.CartItem;
+using CartItem = ShoppingCart.Model.CartItem;
 
 namespace ShoppingCart.Business
 {
-    interface ICartItemService
+    public interface ICartItemService
     {
-        List<CartItem> GetCartItems();
-        int AddCartItem();
-        void DeleteCartItem();
-        void UpdateCartItem();
+        List<CartItem> GetCartItems(int customerId);
+        int AddCartItem(CartItem cartItem);
+        void DeleteCartItem(int customerId);
+        void UpdateCartItem(CartItem cartItem);
     }
 }

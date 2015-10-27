@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ShoppingCart.Data;
+﻿using System.Collections.Generic;
+using DbOrder = ShoppingCart.Data.Order;
+using Order = ShoppingCart.Model.Order;
 
 namespace ShoppingCart.Business
 {
-    interface IOrderService
+    public interface IOrderService
     {
-        List<Order> GetOrders();
-        int AddOrder();
-        void DeleteOrder();
-        void UpdateOrder();
+        List<Order> GetOrders(int customerId);
+        Order GetOrder(int customerId);
+        int AddOrder(Order order);
+        void UpdateOrder(Order order);
     }
 }

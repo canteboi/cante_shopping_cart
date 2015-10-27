@@ -13,7 +13,7 @@ namespace ShoppingCart.Business
 {
     public class ProductService : IProductService
     {
-        private ShoppingCartDbEntities _dbEntities;
+        private readonly ShoppingCartDbEntities _dbEntities;
 
         public ProductService()
         {
@@ -110,8 +110,6 @@ namespace ShoppingCart.Business
 
             try
             {
-                //_dbEntities.Products.Attach(dbproduct);
-
                 dbproduct.categoryid = product.Categoryid;
                 dbproduct.date_modified = DateTime.Now;
                 dbproduct.description = product.Description;
