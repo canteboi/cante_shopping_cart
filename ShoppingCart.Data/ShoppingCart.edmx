@@ -108,6 +108,30 @@
           <Property Name="date_added" Type="datetime" Nullable="false" />
           <Property Name="date_modified" Type="datetime" />
         </EntityType>
+        <Association Name="FK_CartItem_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CartItem" Type="Self.CartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="CartItem">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CartItem_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="CartItem" Type="Self.CartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="CartItem">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ShoppingCartDbModelStoreContainer">
           <EntitySet Name="CartItem" EntityType="Self.CartItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
@@ -116,22 +140,19 @@
           <EntitySet Name="Payment_Method" EntityType="Self.Payment_Method" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CartItem_Customer" Association="Self.FK_CartItem_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CartItem" EntitySet="CartItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartItem_Product" Association="Self.FK_CartItem_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="CartItem" EntitySet="CartItem" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ShoppingCartDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="CartItem">
-          <Key>
-            <PropertyRef Name="cart_id" />
-          </Key>
-          <Property Name="cart_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="customer_id" Type="Int32" Nullable="false" />
-          <Property Name="product_id" Type="Int32" Nullable="false" />
-          <Property Name="quanity" Type="Int32" Nullable="false" />
-          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="date_modified" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="order_id" />
@@ -193,6 +214,7 @@
           <Property Name="categoryid" Type="Int32" Nullable="false" />
           <Property Name="date_added" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="date_modified" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CartItems" Relationship="ShoppingCartDbModel.FK_CartItem_Product" FromRole="Product" ToRole="CartItem" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -209,13 +231,21 @@
           <Property Name="date_modified" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityContainer Name="ShoppingCartDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CartItems" EntityType="Self.CartItem" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Order_Status" EntityType="Self.Order_Status" />
           <EntitySet Name="Payment_Method" EntityType="Self.Payment_Method" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Customers" EntityType="ShoppingCartDbModel.Customer" />
+          <EntitySet Name="CartItems" EntityType="ShoppingCartDbModel.CartItem" />
+          <AssociationSet Name="FK_CartItem_Customer" Association="ShoppingCartDbModel.FK_CartItem_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CartItem" EntitySet="CartItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartItem_Product" Association="ShoppingCartDbModel.FK_CartItem_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="CartItem" EntitySet="CartItems" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -232,25 +262,51 @@
           <Property Name="status" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="token" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="date_added" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CartItems" Relationship="ShoppingCartDbModel.FK_CartItem_Customer" FromRole="Customer" ToRole="CartItem" />
         </EntityType>
+        <EntityType Name="CartItem">
+          <Key>
+            <PropertyRef Name="cart_id" />
+          </Key>
+          <Property Name="cart_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="quanity" Type="Int32" Nullable="false" />
+          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_modified" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Customer" Relationship="ShoppingCartDbModel.FK_CartItem_Customer" FromRole="CartItem" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="ShoppingCartDbModel.FK_CartItem_Product" FromRole="CartItem" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_CartItem_Customer">
+          <End Type="ShoppingCartDbModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="ShoppingCartDbModel.CartItem" Role="CartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="CartItem">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CartItem_Product">
+          <End Type="ShoppingCartDbModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ShoppingCartDbModel.CartItem" Role="CartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="CartItem">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ShoppingCartDbModelStoreContainer" CdmEntityContainer="ShoppingCartDbEntities">
-          <EntitySetMapping Name="CartItems">
-            <EntityTypeMapping TypeName="ShoppingCartDbModel.CartItem">
-              <MappingFragment StoreEntitySet="CartItem">
-                <ScalarProperty Name="cart_id" ColumnName="cart_id" />
-                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="quanity" ColumnName="quanity" />
-                <ScalarProperty Name="date_added" ColumnName="date_added" />
-                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="ShoppingCartDbModel.Order">
               <MappingFragment StoreEntitySet="Order">
@@ -346,6 +402,18 @@
                 <ScalarProperty Name="lastname" ColumnName="lastname" />
                 <ScalarProperty Name="firstname" ColumnName="firstname" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CartItems">
+            <EntityTypeMapping TypeName="ShoppingCartDbModel.CartItem">
+              <MappingFragment StoreEntitySet="CartItem">
+                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
+                <ScalarProperty Name="quanity" ColumnName="quanity" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="cart_id" ColumnName="cart_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

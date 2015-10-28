@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace ShoppingCart.Security
         internal static async Task<HttpResponseMessage> GenerateSecureToken()
         {
 
-            var identity = CustomerService.GetUserFromContext();
+            var identity = CustomerSecurityService.GetUserFromContext();
             return await GenerateSecureToken(identity);
         }
 
@@ -25,7 +26,7 @@ namespace ShoppingCart.Security
         internal static async Task<HttpResponseMessage> GenerateSecureToken(string emailAdress)
         {
 
-            var identity = CustomerService.GetUserFromEmailAddress(emailAdress);
+            var identity = CustomerSecurityService.GetUserFromEmailAddress(emailAdress);
             return await GenerateSecureToken(identity);
         }
 
@@ -40,7 +41,7 @@ namespace ShoppingCart.Security
             try
             {
                 var tokenServiceResponse = await tokenServer.HttpClient.PostAsync(
-                    Startup.tokenEndPoint,
+                    Startup.TokenEndPoint,
                     new FormUrlEncodedContent(pairs)
                     );
 
@@ -56,6 +57,15 @@ namespace ShoppingCart.Security
         internal static CustomerIdentity DecryptToken(string authorizationHeader)
         {
             throw new NotImplementedException();
+        }
+
+        internal static TokenProvider Provider
+        {
+            get
+            {
+                string issuer = ConfigurationManager.AppSettings["App.TokenIssuer"];
+                return tokenProvider ?? (tokenProvider = new TokenProvider(issuer));
+            }
         }
     }
 }

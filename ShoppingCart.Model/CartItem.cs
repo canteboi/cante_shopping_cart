@@ -14,5 +14,8 @@ namespace ShoppingCart.Model
         public int Quanity { get; set; }
         public DateTime DateAdded { get; set; }
         public DateTime? DateModified { get; set; }
+
+        public virtual Customer Customer { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

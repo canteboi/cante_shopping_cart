@@ -14,6 +14,12 @@ namespace ShoppingCart.Data
     
     public partial class Customer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Customer()
+        {
+            this.CartItems = new HashSet<CartItem>();
+        }
+    
         public int customer_id { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
@@ -25,5 +31,8 @@ namespace ShoppingCart.Data
         public string status { get; set; }
         public string token { get; set; }
         public System.DateTime date_added { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CartItem> CartItems { get; set; }
     }
 }

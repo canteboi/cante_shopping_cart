@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your,Keywords">
+    <meta name="author" content="ResponsiveWebInc">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="client/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="client/css/settings.css" media="screen" />
+    <link href="client/css/animate.min.css" rel="stylesheet">
+    <link href="client/css/ddlevelsmenu-base.css" rel="stylesheet">
+    <link href="client/css/ddlevelsmenu-topbar.css" rel="stylesheet">
+    <link href="client/css/jquery.countdown.css" rel="stylesheet">
+    <link href="client/css/font-awesome.min.css" rel="stylesheet">
+    <link href="client/css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#">
+</head>
+<body id="ng-app"
+      ng-app="shoppingcartapp"
+      ng-controller="baseAppCtrl">
+
+    <!--<section class="header-placeholder" ng-include="'client/components/pageheader/pageheader.html'"></section>-->
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-2">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <h1>
+                            <a href="index.html">ShoppingCart</a>
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    <div class="home">
+                        <div id="ddtopmenubarhome" class="mattblackmenu">
+                            <ul>
+                                <li>
+                                    <a href="#" rel="ddsubmenu1">Home</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-2">
+                    <!-- Navigation menu -->
+                    <div class="navi">
+                        <div id="ddtopmenubar" class="mattblackmenu">
+                            <ul>
+                                <li>
+                                    <a href="#" rel="ddsubmenu1">Computers</a>
+                                    <ul id="ddsubmenu1" class="ddsubmenustyle">
+                                        <li><a href="items.html">Desktop</a></li>
+                                        <li><a href="items.html">Laptop</a></li>
+                                        <li><a href="items.html">NetBook</a></li>
+                                        <li><a href="items.html">All-In-One PC</a></li>
+                                        <li><a href="items.html">Alienware</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" rel="ddsubmenu1">Account</a>
+                                    <ul id="ddsubmenu1" class="ddsubmenustyle">
+                                        <li><a href="#/cart">View Cart</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Dropdown NavBar -->
+                    <div class="navis"></div>
+                </div>
+                <div class="col-md-4 col-sm-5">
+                    <div class="kart-links">
+                        <a href="login.html">Login</a>
+                        <a href="register.html">Signup</a>
+                        <a data-toggle="modal" href="#shoppingcart"><i class="fa fa-shopping-cart"></i> 3 Items - $300</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid main-viewport-container">
+        <div ui-view></div>
+    </div>
+    <section class="footer-placeholder" ng-include="'client/components/pagefooter/pagefooter.html'"></section>
+
+    <script src="client/bower_components/html5shiv/dist/html5shiv.min.js"></script>
+    <script src="client/bower_components/jquery/dist/jquery.js"></script>
+    <script src="client/bower_components/angular/angular.js"></script>
+    <script src="client/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="client/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="client/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="client/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="client/bower_components/angular-filter/dist/angular-filter.js"></script>
+    <script src="client/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="client/bower_components/lodash/lodash.js"></script>
+    <script src="client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="client/bower_components/respond/dest/respond.src.js"></script>
+    <script src="client/js/bootstrap.min.js"></script>
+    <script src="client/js/jquery.themepunch.tools.min.js"></script>
+    <script src="client/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="client/js/ddlevelsmenu.js"></script>
+    <script src="client/js/jquery.plugin.min.js"></script>
+    <script src="client/js/jquery.countdown.min.js"></script>
+    <script src="client/js/jquery.navgoco.min.js"></script>
+    <script src="client/js/filter.js"></script>
+    <script src="client/js/custom.js"></script>
+
+    <script src="client/app/app.js"></script>
+    <script src="client/app/app.controller.js"></script>
+
+    <script src="client/app/dashboard/dashboard.controller.js"></script>
+    <script src="client/app/dashboard/dashboard.js"></script>
+
+    <script src="client/app/cart/cart.controller.js"></script>
+    <script src="client/app/cart/cart.js"></script>
+
+    <script src="client/app/resources/dashboard.service.js"></script>
+    <script src="client/app/resources/cart.service.js"></script>
+</body>
+</html>

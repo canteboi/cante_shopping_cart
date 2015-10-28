@@ -25,12 +25,12 @@ namespace ShoppingCart.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CartItem> CartItems { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Order_Status> Order_Status { get; set; }
         public virtual DbSet<Payment_Method> Payment_Method { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<CartItem> CartItems { get; set; }
     }
 }

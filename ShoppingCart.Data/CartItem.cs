@@ -20,5 +20,8 @@ namespace ShoppingCart.Data
         public int quanity { get; set; }
         public System.DateTime date_added { get; set; }
         public Nullable<System.DateTime> date_modified { get; set; }
+    
+        public virtual Customer Customer { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
