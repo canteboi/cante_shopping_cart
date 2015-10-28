@@ -6,5 +6,4 @@ angular.module('shoppingcartapp')
       $scope.cartitems = {};
       $scope.cartitems = _.clone(CartItems, true);
 
-    console.log($scope.cartitems);
 });

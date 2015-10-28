@@ -38,7 +38,7 @@ namespace ShoppingCart.Controllers
         }
 
         [HttpPut]
-        [Route("api/orders/{customerId}/{orderId}")]
+        [Route("api/orders/{customerId}")]
         public HttpResponseMessage Put([FromBody] Order order)
         {
             _orderService.UpdateOrder(order);

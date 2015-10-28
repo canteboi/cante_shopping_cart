@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity.Core;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ShoppingCart.Data;
 using Customer = ShoppingCart.Model.Customer;
 using DbCustomer = ShoppingCart.Data.Customer;

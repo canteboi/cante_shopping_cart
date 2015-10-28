@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using ShoppingCart.Model;
 using DbCartItem = ShoppingCart.Data.CartItem;
-using CartItem = ShoppingCart.Model.CartItem;
 
 namespace ShoppingCart.Business
 {

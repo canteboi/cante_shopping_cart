@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
-using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ShoppingCart.Data;
 using DbProduct = ShoppingCart.Data.Product;
 using Product = ShoppingCart.Model.Product;

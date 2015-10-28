@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ShoppingCart.Model;
 using DbUser = ShoppingCart.Data.User;
-using User = ShoppingCart.Model.User;
 
 namespace ShoppingCart.Business
 {

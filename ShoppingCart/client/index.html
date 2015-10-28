@@ -39,7 +39,7 @@
                         <div id="ddtopmenubarhome" class="mattblackmenu">
                             <ul>
                                 <li>
-                                    <a href="#" rel="ddsubmenu1">Home</a>
+                                    <a href="#/" rel="ddsubmenu1">Home</a>
                                 </li>
                             </ul>
                         </div>
@@ -53,11 +53,11 @@
                                 <li>
                                     <a href="#" rel="ddsubmenu1">Computers</a>
                                     <ul id="ddsubmenu1" class="ddsubmenustyle">
-                                        <li><a href="items.html">Desktop</a></li>
-                                        <li><a href="items.html">Laptop</a></li>
-                                        <li><a href="items.html">NetBook</a></li>
-                                        <li><a href="items.html">All-In-One PC</a></li>
-                                        <li><a href="items.html">Alienware</a></li>
+                                        <li><a href="#/">Desktop</a></li>
+                                        <li><a href="#/">Laptop</a></li>
+                                        <li><a href="#/">NetBook</a></li>
+                                        <li><a href="#/">All-In-One PC</a></li>
+                                        <li><a href="#/">Alienware</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -83,10 +83,9 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid main-viewport-container">
-        <div ui-view></div>
-    </div>
+    <div ui-view></div>
     <section class="footer-placeholder" ng-include="'client/components/pagefooter/pagefooter.html'"></section>
+    <span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span>
 
     <script src="client/bower_components/html5shiv/dist/html5shiv.min.js"></script>
     <script src="client/bower_components/jquery/dist/jquery.js"></script>
@@ -119,7 +118,11 @@
     <script src="client/app/cart/cart.controller.js"></script>
     <script src="client/app/cart/cart.js"></script>
 
+    <script src="client/app/checkout/checkout.controller.js"></script>
+    <script src="client/app/checkout/checkout.js"></script>
+
     <script src="client/app/resources/dashboard.service.js"></script>
     <script src="client/app/resources/cart.service.js"></script>
+    <script src="client/app/resources/selection.service.js"></script>
 </body>
 </html>
