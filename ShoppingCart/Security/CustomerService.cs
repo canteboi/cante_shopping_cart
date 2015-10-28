@@ -10,7 +10,16 @@ namespace ShoppingCart.Security
 {
     internal static class CustomerService
     {
-        internal static CustomerIdentity GetCustomerIdentity(string emailaddress)
+        internal static CustomerIdentity GetUserFromContext()
+        {
+            var user = HttpContext.Current.User.Identity;
+            var emailAddress = user.Name;
+
+
+            return GetUserFromEmailAddress(emailAddress);
+        }
+
+        internal static CustomerIdentity GetUserFromEmailAddress(string emailaddress)
         {
             var identity = new CustomerIdentity("Claims");
             identity.AddClaim(new Claim("emailaddress", emailaddress));
@@ -20,7 +29,7 @@ namespace ShoppingCart.Security
 
         internal static CustomerIdentity GetCurrentUser()
         {
-            var authorizationHeader = HttpContext.Current.Request.Headers["X-Jenni-Authorization"] ?? "";
+            var authorizationHeader = HttpContext.Current.Request.Headers["X-Authorization"] ?? "";
 
             // ::   if the bearer token is still the same as the original 
             //      Authorization header, then this is not a Bearer token.
@@ -34,13 +43,6 @@ namespace ShoppingCart.Security
             }
         }
 
-        internal static CustomerIdentity GetUserFromContext()
-        {
-            var user = HttpContext.Current.User.Identity;
-            var emailAddress = user.Name;
 
-
-            return GetCustomerIdentity(emailAddress);
-        }
     }
 }

@@ -20,6 +20,7 @@ namespace ShoppingCart.Data
         public string email { get; set; }
         public string telephone { get; set; }
         public string password { get; set; }
+        public string salt { get; set; }
         public Nullable<int> cart_id { get; set; }
         public string status { get; set; }
         public string token { get; set; }

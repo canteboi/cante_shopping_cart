@@ -17,14 +17,15 @@ namespace ShoppingCart.Security
         internal static async Task<HttpResponseMessage> GenerateSecureToken()
         {
 
-            throw new NotImplementedException();
+            var identity = CustomerService.GetUserFromContext();
+            return await GenerateSecureToken(identity);
         }
 
 
         internal static async Task<HttpResponseMessage> GenerateSecureToken(string emailAdress)
         {
 
-            var identity = CustomerService.GetUserFromContext();
+            var identity = CustomerService.GetUserFromEmailAddress(emailAdress);
             return await GenerateSecureToken(identity);
         }
 

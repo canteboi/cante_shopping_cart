@@ -16,14 +16,18 @@ namespace ShoppingCart.Security
         {
             get
             {
-                //TODO
-                return true;
+                return this.FindFirst("emailaddress") != null;
             }
         }
 
         public override string Name
         {
-            get { return ""; }
+            get
+            {
+                return this.FindFirst("emailaddress").Value;
+            }
         }
+
+        public string Password { get; set; }
     }
 }
