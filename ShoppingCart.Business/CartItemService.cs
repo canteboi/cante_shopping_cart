@@ -5,8 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ShoppingCart.Data;
+using ShoppingCart.Model;
 using DbCartItem = ShoppingCart.Data.CartItem;
 using CartItem = ShoppingCart.Model.CartItem;
+using DbProduct = ShoppingCart.Data.Product;
+using Product = ShoppingCart.Model.Product;
 
 namespace ShoppingCart.Business
 {
@@ -28,7 +31,15 @@ namespace ShoppingCart.Business
                 DateAdded = x.date_added,
                 DateModified = x.date_modified,
                 ProductId = x.product_id,
-                Quanity = x.quanity
+                Quanity = x.quanity,
+                Product = new Product()
+                                {
+                                    Productname = x.Product.productname,
+                                    Productid = x.product_id,
+                                    Image = x.Product.image,
+                                    Imagename = x.Product.imagename,
+                                    Unitprice = x.Product.unitprice
+                                }
             });
 
             return cartitems;

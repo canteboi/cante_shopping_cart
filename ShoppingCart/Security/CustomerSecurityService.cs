@@ -5,11 +5,14 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Microsoft.Owin.Security.OAuth;
+using ShoppingCart.Providers;
 
 namespace ShoppingCart.Security
 {
-    internal static class CustomerService
+    internal static class CustomerSecurityService
     {
+        private static readonly OAuthAuthorizationServerProvider authorizationProvider = new AppAuthenticationProvider();
         internal static CustomerIdentity GetUserFromContext()
         {
             var user = HttpContext.Current.User.Identity;
@@ -43,6 +46,12 @@ namespace ShoppingCart.Security
             }
         }
 
-
+        internal static IOAuthAuthorizationServerProvider AuthorizationProvider
+        {
+            get
+            {
+                return authorizationProvider;
+            }
+        }
     }
 }

@@ -32,6 +32,15 @@ namespace ShoppingCart.Controllers
         [Route("api/orders/{customerId}")]
         public HttpResponseMessage Post([FromBody] Order order)
         {
+            _orderService.AddOrder(order);
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [HttpPut]
+        [Route("api/orders/{customerId}/{orderId}")]
+        public HttpResponseMessage Put([FromBody] Order order)
+        {
             _orderService.UpdateOrder(order);
 
             return Request.CreateResponse(HttpStatusCode.OK);

@@ -1,0 +1,97 @@
+﻿<section class="-s-project-details-budgets container-fluid">
+
+    <div class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Catchy title -->
+                    <h3>It<span class="color">'</span>s Lorem ipsum <span class="color">dolor</span> sit amet consectetur</h3>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                </div>
+            </div>
+            <div class="sep-bor"></div>
+        </div>
+    </div>
+
+    <div class="shop-items blocky">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="product in products | limitTo:4:0">
+                    <div class="item">
+
+                        <div class="item-image">
+                            <a href="single-item.html"><img src="{{ product.image }}" alt="" class="img-responsive" /></a>
+                        </div>
+
+                        <div class="item-details">
+
+                            <h5><a href="single-item.html"> {{ product.productname }}</a></h5>
+                            <div class="clearfix"></div>
+
+                            <p> {{ product.shortdesc }}</p>
+                            <hr />
+
+                            <div class="item-price pull-left">$ {{ product.unitprice }}</div>
+
+                            <div class="pull-right"><a href="#" class="btn btn-danger btn-sm">Add to Cart</a></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="product in products | limitTo:4:4">
+                    <div class="item">
+
+                        <div class="item-image">
+                            <a href="single-item.html"><img src="{{ product.image }}" alt="" class="img-responsive" /></a>
+                        </div>
+
+                        <div class="item-details">
+
+                            <h5><a href="single-item.html"> {{ product.productname }}</a></h5>
+                            <div class="clearfix"></div>
+
+                            <p> {{ product.shortdesc }}</p>
+                            <hr />
+
+                            <div class="item-price pull-left">$ {{ product.unitprice }}</div>
+
+                            <div class="pull-right">
+                                <a href="#" class="btn btn-danger btn-sm">Add to Cart</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="product in products | limitTo:4:8">
+                    <div class="item">
+
+                        <div class="item-image">
+                            <a href="single-item.html"><img src="{{ product.image }}" alt="" class="img-responsive" /></a>
+                        </div>
+
+                        <div class="item-details">
+
+                            <h5><a href="single-item.html"> {{ product.productname }}</a></h5>
+                            <div class="clearfix"></div>
+                            <p> {{ product.shortdesc }}</p>
+                            <hr />
+                            <div class="item-price pull-left">$ {{ product.unitprice }}</div>
+                            <div class="pull-right"><a href="#" class="btn btn-danger btn-sm">Add to Cart</a></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
