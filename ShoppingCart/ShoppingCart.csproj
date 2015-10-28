@@ -238,6 +238,7 @@
     <Compile Include="Controllers\OrdersApiController.cs" />
     <Compile Include="Controllers\ProductsApiController.cs" />
     <Compile Include="Controllers\SecurityApiController.cs" />
+    <Compile Include="Controllers\SelectionApiController.cs" />
     <Compile Include="Controllers\SpaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -265,11 +266,16 @@
     <Content Include="client\app\cart\cart.controller.js" />
     <Content Include="client\app\cart\cart.html" />
     <Content Include="client\app\cart\cart.js" />
+    <Content Include="client\app\checkout\checkout.controller.js" />
+    <Content Include="client\app\checkout\checkout.html" />
+    <Content Include="client\app\checkout\checkout.js" />
     <Content Include="client\app\dashboard\dashboard.controller.js" />
     <Content Include="client\app\dashboard\dashboard.html" />
     <Content Include="client\app\dashboard\dashboard.js" />
     <Content Include="client\app\resources\cart.service.js" />
+    <Content Include="client\app\resources\checkout.service.js" />
     <Content Include="client\app\resources\dashboard.service.js" />
+    <Content Include="client\app\resources\selection.service.js" />
     <Content Include="client\assets\arrowleft.png" />
     <Content Include="client\assets\arrowright.png" />
     <Content Include="client\assets\arrow_large_left.png" />

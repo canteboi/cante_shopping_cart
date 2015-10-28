@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Core;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ShoppingCart.Data;
-using CartItem = ShoppingCart.Model.CartItem;
 using DbOrder = ShoppingCart.Data.Order;
 using Order = ShoppingCart.Model.Order;
 

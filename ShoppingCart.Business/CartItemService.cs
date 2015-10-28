@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.Data.Entity.Core;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ShoppingCart.Data;
-using ShoppingCart.Model;
-using DbCartItem = ShoppingCart.Data.CartItem;
 using CartItem = ShoppingCart.Model.CartItem;
+using DbCartItem = ShoppingCart.Data.CartItem;
 using DbProduct = ShoppingCart.Data.Product;
 using Product = ShoppingCart.Model.Product;
 

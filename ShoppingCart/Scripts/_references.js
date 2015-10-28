@@ -170,3 +170,7 @@
 /// <reference path="../client/app/cart/cart.js" />
 /// <reference path="../client/app/cart/cart.controller.js" />
 /// <reference path="../client/app/resources/cart.service.js" />
+/// <reference path="../client/app/checkout/checkout.js" />
+/// <reference path="../client/app/checkout/checkout.controller.js" />
+/// <reference path="../client/app/resources/checkout.service.js" />
+/// <reference path="../client/app/resources/selection.service.js" />

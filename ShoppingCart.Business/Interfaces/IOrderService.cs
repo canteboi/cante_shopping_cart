@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using ShoppingCart.Model;
 using DbOrder = ShoppingCart.Data.Order;
-using Order = ShoppingCart.Model.Order;
 
 namespace ShoppingCart.Business
 {
